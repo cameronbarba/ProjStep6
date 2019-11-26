@@ -1,0 +1,79 @@
+<html>
+<h1>List of Teams</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Location</th>
+			<th>Mascot</th>
+			<th>Jersey Colors</th>
+			<th>Division</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each teams}}
+		<tr>
+			<td>{{name}}</td>
+			<td>{{location}}</td>
+			<td>{{mascot}}</td>
+			<td>{{jerseycolors}}</td>
+			<td>{{division}}</td>
+			<td><button>Edit</button></td>
+			<td><button onclick="deleteTeam({{id}})">Delete</button></td>
+
+		</tr>
+		{{/each}}
+	</tbody>
+</table>
+
+<form id="addteam" action="/teams" method="get">
+	<div>
+		<label for="Name">Name:</label>
+		<input type="text" id="name" name="div-name">
+	</div>
+	<div>
+		<label for="Name">Location:</label>
+		<input type="text" id="name" name="div-name">
+	</div>
+	<div>
+		<label for="Name">Mascot:</label>
+		<input type="text" id="name" name="div-name">
+	</div>
+	<div>
+		<label for="Name">Jersey Colors:</label>
+		<input type="text" id="name" name="div-name">
+	</div>
+	<div>
+		<label for="Name">Division:</label>
+		<select type="text" id="name" name="division">
+			{{#each division}}
+			<option value="{{id}}">{{name}}</option>
+			{{/each}}
+	</div>
+	<br>
+	<div class="button">
+		<input type="Submit" name="Add" value="Add">Add Team</input>
+	</div>
+	
+</form>
+<br>
+<br>
+<br>
+
+<form id="searchTeam" action="" method="">
+	<div>
+		<label for="Name">Search for Team: </label>
+		<input type="button" value="Search" onclick="searchTeamByName()">
+	</div>
+	<br>
+	<div class="button">
+		<button type="Submit">Find Team</button>
+	</div>
+	
+</form>
+
+</body>
+</html>

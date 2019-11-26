@@ -1,0 +1,63 @@
+
+<h3>Add new coach:</h3>
+<form id="Add" action="/coaches" method="get">
+    First name: <input type="text" name="firstName"><br>
+    Last name: <input type="text" name="lastName"><br>
+    Team: <select name="team"> 
+        {{#each teams}}
+        <option value="{{teamID}}">{{name}}</option>
+        {{/each}}
+    </select><br>
+    Role: <select name="role">
+        <option value="Head">Head Coach</option>
+        <option value="Assistant">Assistant Coach</option>
+    </select><br>
+    Tenure: <input type="number" name="tenure" stepi="1"><br>
+    <input type="submit" name="Add" value="Add">
+ </form>
+<br/>
+
+<form id='filter_coaches' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Filter by team </label>
+    <select id='team_filter' name="team"> 
+        {{#each teams}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+    </select><br>
+    <input type="button" value="Filter" onclick="filtercoachesByteam()">
+</form>
+
+<form id='search_coaches' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Search coaches for first name starting with:</label>
+    <input id='first_name_search_string' type='text' name='first_name_search_string' value=''>
+    <input type="button" value="Search" onclick="searchcoachesByFirstName()">
+</form>
+
+<h3>Current coaches:</h3>
+<table>
+    <thead> 
+        <th>First Name</th> 
+        <th>Last Name</th> 
+        <th>Role</th>
+        <th>Tenure</th>  
+    </thead> 
+    <tbody>
+        {{#each coaches}} 
+        <tr> 
+            <td>{{firstName}}</td> 
+            <td>{{lastName}}</td> 
+            <td>{{role}}</td> 
+            <td>{{tenure}}</td>
+            <td>
+               <form method="get">
+                  <input type="hidden" name="coachID" value="{{coachID}}">
+                  <input type="submit" name="Delete" value="Delete">
+               </form>
+            <td><a href="/coaches/{{id}}">Update</a></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
+

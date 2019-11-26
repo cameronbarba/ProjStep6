@@ -1,0 +1,68 @@
+<html>
+<h3>Add new players:</h3>
+<form id="addplayer" action="/players" method="get">
+    First name: <input type="text" name="firstName"><br>
+    Last name: <input type="text" name="lastName"><br>
+    Team: <select name="team">
+       {{#each teams}}
+       <option value="{{teamID}}">{{name}}</option>
+       {{/each}}
+    <select><br>
+    Height: <input type="number" name="height"><br>
+    Weight: <input type="number" name="weight"><br>
+    Position: <select name="position">
+       <option value="PG">PG</option>
+       <option value="SG">SG</option>
+       <option value="SF">SF</option>
+       <option value="PF">PF</option>
+       <option value="C">C</option>
+    </select><br>
+    <input type="submit" name="Add" value="Add">
+ </form>
+<br/>
+
+<form id='filter_players' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Filter by team </label>
+    <select id='team_filter' name="team"> 
+        {{#each teams}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+    </select><br>
+    <input type="button" value="Filter" onclick="filterplayersByteam()">
+</form>
+
+<form id='search_players' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Search players for first name starting with:</label>
+    <input id='first_name_search_string' type='text' name='first_name_search_string' value=''>
+    <input type="button" value="Search" onclick="searchplayersByFirstName()">
+</form>
+<h3>Current players:</h3>
+<table>
+    <thead> 
+        <th>First Name</th> 
+        <th>Last Name</th> 
+        <th>Height</th>
+        <th>Weight</th>
+        <th>Position</th>  
+    </thead> 
+    <tbody>
+        {{#each players}}
+        <tr> 
+            <td>{{firstName}}</td> 
+            <td>{{lastName}}</td> 
+            <td>{{height}}</td> 
+            <td>{{weight}}</td>
+            <td>{{position}}</td>
+            <td>
+               <form method="get">
+                  <input type="hidden" name="playerID" value="{{this.playerID}}">
+                  <input type="submit" name="Delete" value="Delete">
+               </form>
+            <td><a href="/players/{{id}}">Update</a></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
+</html>

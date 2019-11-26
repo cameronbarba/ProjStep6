@@ -1,0 +1,63 @@
+<html>
+<h1>List of Divisions</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each division}}
+		<tr>
+			<td>{{name}}</td>
+			<td><a href="/division/{{id}}">Edit</a></td>
+			<td><button onclick="deletePerson({{id}})">Delete</button></td>
+
+		</tr>
+		{{/each}}
+		<tr>
+			<td>Northwest</td>
+			<td><button>Edit</button></td>
+			<td><button>Delete</button></td>
+
+		</tr>
+	
+	</tbody>
+</table>
+<br>
+<br>
+	<br>
+<form id="addDivision" action="/division" method="post">
+	<div>
+		<label for="Name">Add Division:</label>
+		<input type="text" id="name" name="div-name">
+	</div>
+	<br>
+	<div class="button">
+		<input type="Submit" name="Add" value="Add">Add Division</input>
+	</div>
+	
+</form>
+<br>
+<br>
+<br>
+
+<form id="searchDivision" action="" method="">
+	<div>
+		<label for="Name">Search for Division: </label>
+		<input type="text" id="name" name="div-name" onclick="searchByDivision()">
+	</div>
+	<br>
+	<div class="button">
+		<input type="submit" name="Add" value="Add">Find Division</input>
+	</div>
+	
+</form>
+
+
+
+</body>
+</html

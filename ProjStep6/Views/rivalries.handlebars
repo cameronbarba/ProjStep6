@@ -1,0 +1,40 @@
+<html>
+<h3>Add new rivalry:</h3>
+<form id="addrivalry" action="/rivalries" method="get">
+    Team 1: <select name="team1"> 
+        {{#each teams}}
+        <option value="{{teamID}}">{{name}}</option>
+        {{/each}}
+    </select><br>
+     Team 2: <select name="team2"> 
+        {{#each teams}}
+        <option value="{{teamID}}">{{name}}</option>
+        {{/each}}
+    </select><br>   
+    <input type="submit" name="Add" value="Add">
+ </form>
+<br/>
+
+<h3>Current rivalries:</h3>
+<table>
+    <thead> 
+        <th>Team 1</th> 
+        <th>Team 2</th> 
+    </thead> 
+    <tbody>
+        {{#each rivals}} 
+        <tr> 
+            <td>{{team1ID}}</td> 
+            <td>{{team2ID}}</td> 
+            <td>
+               <form method="get">
+                  <input type="hidden" name="team1" value="{{team1ID}}">
+                  <input type="hidden" name="team2" value="{{team2ID}}">
+                  <input type="submit" name="Delete" value="Delete">
+               </form>
+            <td><a href="/rivalries/{{id}}">Update</a></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
+</html>
